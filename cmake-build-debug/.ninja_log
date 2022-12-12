@@ -1,0 +1,14 @@
+# ninja log v5
+3	152	6922185570661938	CMakeFiles/Jogo_do_Galo.dir/main.c.obj	467308c08d84327b
+231	382	6922234627372526	Jogo_do_Galo.exe	e095649e2d8116d3
+4	142	6922227865431673	CMakeFiles/Jogo_do_Galo.dir/menu.c.obj	48580d2b58741501
+9	211	6922191892117422	CMakeFiles/Jogo_do_Galo.dir/jogo.c.obj	bfcb20ceba240b5e
+3	230	6922234625856586	CMakeFiles/Jogo_do_Galo.dir/dadosjogadores.c.obj	6dd87a1f26fd59bb
+3	103	6922235618122292	CMakeFiles/Jogo_do_Galo.dir/dadosjogadores.c.obj	6dd87a1f26fd59bb
+104	291	6922235620002325	Jogo_do_Galo.exe	e095649e2d8116d3
+3	95	6922237194042380	CMakeFiles/Jogo_do_Galo.dir/dadosjogadores.c.obj	6dd87a1f26fd59bb
+98	286	6922237195797685	Jogo_do_Galo.exe	e095649e2d8116d3
+9	249	6923060150997396	CMakeFiles/Jogo_do_Galo.dir/jogo.c.obj	bfcb20ceba240b5e
+17	301	6923060151486088	CMakeFiles/Jogo_do_Galo.dir/dadosjogadores.c.obj	6dd87a1f26fd59bb
+3	428	6923060152373714	CMakeFiles/Jogo_do_Galo.dir/menu.c.obj	48580d2b58741501
+428	786	6923060156771989	Jogo_do_Galo.exe	e095649e2d8116d3
