@@ -12,10 +12,13 @@ void apagarJogadores();
 void verJogadores();
 void carregarJogadores();
 
+extern int numJogadores;
+
 typedef struct dadosjogadores{
     int id;
     int vitorias; // Resgistar no fim de cada jogo
     int derrotas;   // Registar no fim de cada jogo
+    int empates; // Registar no fim de cada jogo
     char nome[MAX_VECTOR];  // Escrever no inico do jogo
     char apelido[MAX_VECTOR]; // Escrever no inico do jogo
 

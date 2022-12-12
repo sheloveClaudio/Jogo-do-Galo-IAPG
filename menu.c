@@ -118,7 +118,7 @@ void jogar_menu() {
     while(true){
         printf("\n -x- Jogar -x-\n");
         jogar_menu2();
-        printf("\n-x- Escolha uma das opcoes -x-\n");
+        printf("\n\n-x- Escolha uma das opcoes -x-\n");
         scanf("%d",&valor);
         switch (valor) {
             case 1:
@@ -140,8 +140,8 @@ void jogar_menu() {
 
 
 void jogar_menu2() {
-    printf("1 - Jogar vs Computador\n");
-    printf("2 - Jogar Um vs Um\n");
+    printf("\n1 - Jogar  Um vs Um\n");
+    printf("2 - Jogar contra Computador\n");
     printf("0 - Voltar\n");
 }
 

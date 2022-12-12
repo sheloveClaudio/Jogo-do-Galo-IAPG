@@ -7,10 +7,7 @@
 #include <stdlib.h>
 #include "menu.h"
 
-
-
 int numJogadores = 0;
-
 
 void registarjogadores(JOGADORES vecJogadores_2[MAX_VECTOR]){
 
@@ -27,7 +24,7 @@ void registarjogadores(JOGADORES vecJogadores_2[MAX_VECTOR]){
             scanf("%s",&j.nome);
             printf("Apelido:");
             scanf("%s",&j.apelido);
-            printf("Jogador registado com sucesso!\n");
+            printf("\nJogador registado com sucesso!\n");
 
             numJogadores++;
             vecJogadores_2[i] = j;
@@ -73,10 +70,28 @@ void apagarJogadores(JOGADORES vecJogadores_2[MAX_VECTOR]) {
 }
 
 void verJogadores(JOGADORES vecJogadores_2[MAX_VECTOR]){
+    int valor = 0;
+    if(numJogadores == 0){
+        printf("\nO numero total de jogadores e: %d",numJogadores);
+    }
+    else{
     printf("\nO numero total de jogadores e: %d",numJogadores);
     printf("\n -x- Jogadores -x- \n");
     for (int i = 0; i < numJogadores; i++) {
-        printf("\nID: %d\nNome: %s %s\nEstatistica: V -> %d D -> %d\n", vecJogadores_2[i].id, vecJogadores_2[i].nome, vecJogadores_2[i].apelido, vecJogadores_2[i].vitorias, vecJogadores_2[i].derrotas);
+        printf("\nID: %d\nNome: %s %s\nEstatistica: V -> %d D -> %d E -> %d\n", vecJogadores_2[i].id, vecJogadores_2[i].nome, vecJogadores_2[i].apelido, vecJogadores_2[i].vitorias, vecJogadores_2[i].derrotas, vecJogadores_2[i].empates);
+    }
+    }
+    printf("\n-x- Lista de Jogadores -x-\n");
+    printf("\n\n0 - Voltar \n");
+    printf("\n-x- Escolha uma das opcoes -x-\n");
+    scanf("%d",valor);
+    switch (valor) {
+        case 0:
+            printf("\n-x- A ir para o menu de jogadores... -x-\n");
+            jogadores_menu();
+        default:
+            printf("Opcao invalida!!\n");
+            break;
     }
 }
 
