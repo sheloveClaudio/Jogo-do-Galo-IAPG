@@ -11,8 +11,10 @@
 #include "dadosjogadores.h"
 #include "menu.h"
 
-struct dadosjogo Dados[MAX_VECTOR];
-int x = 5, vez = 0;
+DADOS Dados[MAX_VECTOR];
+
+
+int x, vez = 0;
 
 
 void gerartabuleiro(char mat[x][x]){
@@ -45,6 +47,12 @@ void gerartabuleiro(char mat[x][x]){
 
 
 void jogo1vAI(JOGADORES *vecJogadores){
+    int n;
+    printf("\n-x- Tamanho do tabuleiro? -x-\n");
+    printf("-x- Minimo 3! -x-\n");
+    scanf("%d",&n);
+    x=n+(n-1);
+
     char mat[x][x];
     int id1,k=0;
     if(numJogadores<1){
@@ -60,10 +68,11 @@ void jogo1vAI(JOGADORES *vecJogadores){
                 }
             }
         }while(k!=1);
-        jogar1vAI(mat,id1,vecJogadores);
+        jogar1vAI(mat,id1,vecJogadores,n);
     }
 }
-void jogar1vAI(char mat[x][x], int id1 ,JOGADORES *vecJogadores){
+
+void jogar1vAI(char mat[x][x], int id1 ,JOGADORES *vecJogadores,int n){
     int inome1;
     limpartabuleiro(mat);
     inome1 = buscarNome(id1,vecJogadores);
@@ -72,8 +81,8 @@ void jogar1vAI(char mat[x][x], int id1 ,JOGADORES *vecJogadores){
         printf("\n-x- %s -> X -x-", vecJogadores[inome1].nome);
         printf("\n-x- AI -> O -x-\n\n");
         gerartabuleiro(mat);
-        jogadavsAI(mat,vecJogadores,inome1);
-    }while(verificarTerminoAI(mat,vecJogadores,inome1) != 1);
+        jogadavsAI(mat,vecJogadores,inome1,x);
+    }while(verificarTerminoAI(mat,vecJogadores,inome1,n) != 1);
 }
 
 void jogadavsAI(char mat[x][x], JOGADORES *vecJogadores, int inome1){
@@ -90,26 +99,34 @@ void jogadavsAI(char mat[x][x], JOGADORES *vecJogadores, int inome1){
             do {
                 scanf("%d", &linha);
             }while (linha <= 0);
-            if(linha == 1){
-                linha = linha - 1;
-            }else{
-                if(linha%2 != 0){
-                    linha++;
-                }else{
-                    linha = linha;
+            if(linha<4) {
+                if (linha == 1) {
+                    linha = linha - 1;
+                } else {
+                    if (linha % 2 != 0) {
+                        linha++;
+                    } else {
+                        linha = linha;
+                    }
                 }
+            }else{
+                linha = 2 + linha + (linha-4);
             }
             // Pergunta a coluna para jogar
             printf("\n-x- Em que coluna quer jogar? -x-\n");
             scanf("%d",&coluna);
-            if(coluna == 1){
-                coluna = coluna - 1;
-            }else{
-                if(coluna%2 != 0) {
-                    coluna++;
+            if(coluna<4){
+                if(coluna == 1){
+                    coluna = coluna - 1;
                 }else{
-                    coluna = coluna;
+                    if(coluna%2 != 0) {
+                        coluna++;
+                    }else{
+                        coluna = coluna;
+                    }
                 }
+            }else{
+                coluna = 2 + coluna + (coluna-4);
             }
             if(verificaPosicao(mat, linha, coluna) != 1){
                 printf("\n-x- Posicao nao valida para selecao!! -x-\n");
@@ -129,40 +146,40 @@ void jogadaAI(char mat[x][x]) {
     int linha, coluna;
     srand(time(0));
     do{
-        linha = (rand() % (x - 1 + 1)) + 1;
-        coluna = (rand() % (x - 1 + 1)) + 1;
+        linha = (rand() % (x - 0 + 1)) + 0;
+        coluna = (rand() % (x - 0 + 1)) + 0;
     } while(verificaPosicao(mat, linha, coluna) != 1);
     mat[linha][coluna]= 'O';
 }
 
-int verificarTerminoAI(char mat[x][x], JOGADORES *vecJogadores, int inome1) {
-    if(verificarLinhaAI(mat,vecJogadores,inome1) == 1){
+int verificarTerminoAI(char mat[x][x], JOGADORES *vecJogadores, int inome1, int n) {
+    if(verificarLinhaAI(mat,vecJogadores,inome1,n) == 1){
         gerartabuleiro(mat);
         putchar('\n');
         return(1);
     }
-    if(verificarColunaAI(mat,vecJogadores,inome1) == 1){
+    if(verificarColunaAI(mat,vecJogadores,inome1,n) == 1){
         gerartabuleiro(mat);
         putchar('\n');
         return(1);
     }
-    if(verificarDiagonalPrimariaAI(mat,vecJogadores,inome1) == 1){
+    if(verificarDiagonalPrimariaAI(mat,vecJogadores,inome1,n) == 1){
         gerartabuleiro(mat);
         putchar('\n');
         return(1);
     }
-    if(verificarDiagonalSecundariaAI(mat,vecJogadores,inome1) == 1){
+    if(verificarDiagonalSecundariaAI(mat,vecJogadores,inome1,n) == 1){
         gerartabuleiro(mat);
         putchar('\n');
         return(1);
     }
-    if(verificarEmpateAI(mat,vecJogadores,inome1) == 1){
+    if(verificarEmpateAI(mat,vecJogadores,inome1,n) == 1){
         gerartabuleiro(mat);
         putchar('\n');
         return(1);
     }
 }
-int verificarEmpateAI(char mat[x][x], JOGADORES *vecJogadores, int inome1) {
+int verificarEmpateAI(char mat[x][x], JOGADORES *vecJogadores, int inome1, int n) {
     int cont=0;
     for (int i = 0; i <x ; i=i+2){
         for (int j = 0; j < x; j= j+2) {
@@ -171,7 +188,7 @@ int verificarEmpateAI(char mat[x][x], JOGADORES *vecJogadores, int inome1) {
             }
         }
     }
-    if(cont == pow(x-2,2)){
+    if(cont == pow(n,2)){
         limpar();
         printf("Empate!\n\n");
         vecJogadores[inome1].empates++;
@@ -179,7 +196,7 @@ int verificarEmpateAI(char mat[x][x], JOGADORES *vecJogadores, int inome1) {
     }
 }
 
-int verificarDiagonalSecundariaAI(char mat[x][x], JOGADORES *vecJogadores, int inome1){
+int verificarDiagonalSecundariaAI(char mat[x][x], JOGADORES *vecJogadores, int inome1, int n){
     int cont_o = 0, cont_x = 0;
     for (int i = 0; i < x; i = i+2) {
         if (mat[i][x-1-i] == 'X') {
@@ -187,40 +204,25 @@ int verificarDiagonalSecundariaAI(char mat[x][x], JOGADORES *vecJogadores, int i
         } else if (mat[i][x-1-i] == 'O') {
             cont_o++;
         }
-        if(cont_x==x-2){
-            limpar();
-            printf("O vencedor e %s!\n\n", vecJogadores[inome1].nome);
-            vecJogadores[inome1].vitorias++;
-            return(1);
-        }
-        else if(cont_o==x-2){
-            limpar();
-            printf("O vencedor e AI!\n\n");
-            vecJogadores[inome1].derrotas++;
-            return(1);
-        }
-    }
-}
-
-
-
-int verificarColunaAI(char mat[x][x], JOGADORES *vecJogadores, int inome1) {
-    int cont, cont1;
-    for (int i = 0; i < x; i = i+2) {
-        for (int j = 0; j < x; j = j+2) {
-            cont = 0; cont1 = 0;
-            // Mudar o valor de x quando é introduzido. Corro as linhas
-            if (mat[i][j] == 'X') {
-                cont++;
-            } else if (mat[i][j] == 'O') {
-                cont1++;
-            }
-            if (cont == x - 2) {
+        if(n<4){
+            if (cont_x == x - 2) {
                 limpar();
                 printf("O vencedor e %s!\n\n", vecJogadores[inome1].nome);
                 vecJogadores[inome1].vitorias++;
                 return (1);
-            } else if (cont1 == x - 2) {
+            } else if (cont_o == x - 2) {
+                limpar();
+                printf("O vencedor e AI!\n\n");
+                vecJogadores[inome1].derrotas++;
+                return (1);
+            }
+        }else{
+            if (cont_x == n) {
+                limpar();
+                printf("O vencedor e %s!\n\n", vecJogadores[inome1].nome);
+                vecJogadores[inome1].vitorias++;
+                return (1);
+            } else if (cont_o == n) {
                 limpar();
                 printf("O vencedor e AI!\n\n");
                 vecJogadores[inome1].derrotas++;
@@ -229,9 +231,50 @@ int verificarColunaAI(char mat[x][x], JOGADORES *vecJogadores, int inome1) {
         }
     }
 }
-int verificarDiagonalPrimariaAI(char mat[x][x], JOGADORES *vecJogadores, int inome1) {
-    int cont_x = 0, cont_o = 0;
 
+
+
+int verificarColunaAI(char mat[x][x], JOGADORES *vecJogadores, int inome1, int n) {
+    int cont, cont1;
+    for (int i = 0; i < x; i = i+2) {
+        cont=0;cont1=0;
+        for (int j = 0; j < x; j = j+2) {
+            // Mudar o valor de x quando é introduzido. Corro as linhas
+            if (mat[j][i] == 'X') {
+                cont++;
+            } else if (mat[j][i] == 'O') {
+                cont1++;
+            }
+            if(n<4){
+                if (cont == x - 2) {
+                    limpar();
+                    printf("O vencedor e %s!\n\n", vecJogadores[inome1].nome);
+                    vecJogadores[inome1].vitorias++;
+                    return (1);
+                } else if (cont1 == x - 2) {
+                    limpar();
+                    printf("O vencedor e AI!\n\n");
+                    vecJogadores[inome1].derrotas++;
+                    return (1);
+                }
+            }else{
+                if (cont == n) {
+                    limpar();
+                    printf("O vencedor e %s!\n\n", vecJogadores[inome1].nome);
+                    vecJogadores[inome1].vitorias++;
+                    return (1);
+                } else if (cont1 == n) {
+                    limpar();
+                    printf("O vencedor e AI!\n\n");
+                    vecJogadores[inome1].derrotas++;
+                    return (1);
+                }
+            }
+        }
+    }
+}
+int verificarDiagonalPrimariaAI(char mat[x][x], JOGADORES *vecJogadores, int inome1, int n) {
+    int cont_x = 0, cont_o = 0;
     for (int i = 0; i < x; i = i + 2) {
         for (int j = 0; j < x; j = j + 2) {
             if (i == j) {
@@ -241,17 +284,30 @@ int verificarDiagonalPrimariaAI(char mat[x][x], JOGADORES *vecJogadores, int ino
                     cont_o++;
                 }
             }
-            if(cont_x==x-2){
-                limpar();
-                printf("O vencedor e %s!\n\n", vecJogadores[inome1].nome);
-                vecJogadores[inome1].vitorias++;
-                return(1);
-            }
-            else if(cont_o==x-2){
-                limpar();
-                printf("O vencedor e AI!\n\n");
-                vecJogadores[inome1].derrotas++;
-                return(1);
+            if(n<4){
+                if (cont_x == x - 2) {
+                    limpar();
+                    printf("O vencedor e %s!\n\n", vecJogadores[inome1].nome);
+                    vecJogadores[inome1].vitorias++;
+                    return (1);
+                } else if (cont_o == x - 2) {
+                    limpar();
+                    printf("O vencedor e AI!\n\n");
+                    vecJogadores[inome1].derrotas++;
+                    return (1);
+                }
+            }else{
+                if (cont_x == n) {
+                    limpar();
+                    printf("O vencedor e %s!\n\n", vecJogadores[inome1].nome);
+                    vecJogadores[inome1].vitorias++;
+                    return (1);
+                } else if (cont_o == n) {
+                    limpar();
+                    printf("O vencedor e AI!\n\n");
+                    vecJogadores[inome1].derrotas++;
+                    return (1);
+                }
             }
         }
     }
@@ -259,7 +315,7 @@ int verificarDiagonalPrimariaAI(char mat[x][x], JOGADORES *vecJogadores, int ino
 
 
 
-int verificarLinhaAI(char mat[x][x], JOGADORES *vecJogadores, int inome1) {
+int verificarLinhaAI(char mat[x][x], JOGADORES *vecJogadores, int inome1, int n) {
     int cont, cont1;
     for (int i = 0; i < x; i = i+2) {
         cont = 0; cont1 = 0;
@@ -270,16 +326,30 @@ int verificarLinhaAI(char mat[x][x], JOGADORES *vecJogadores, int inome1) {
             } else if (mat[i][j] == 'O') {
                 cont1++;
             }
-            if (cont == x - 2) {
-                limpar();
-                printf("O vencedor e %s!\n\n", vecJogadores[inome1].nome);
-                vecJogadores[inome1].vitorias++;
-                return (1);
-            } else if (cont1 == x - 2) {
-                limpar();
-                printf("O vencedor e AI!\n\n");
-                vecJogadores[inome1].derrotas++;
-                return (1);
+            if(n<4){
+                if (cont == x - 2) {
+                    limpar();
+                    printf("O vencedor e %s!\n\n", vecJogadores[inome1].nome);
+                    vecJogadores[inome1].vitorias++;
+                    return (1);
+                } else if (cont1 == x - 2) {
+                    limpar();
+                    printf("O vencedor e AI!\n\n");
+                    vecJogadores[inome1].derrotas++;
+                    return (1);
+                }
+            }else{
+                if (cont == n) {
+                    limpar();
+                    printf("O vencedor e %s!\n\n", vecJogadores[inome1].nome);
+                    vecJogadores[inome1].vitorias++;
+                    return (1);
+                } else if (cont1 == n) {
+                    limpar();
+                    printf("O vencedor e AI!\n\n");
+                    vecJogadores[inome1].derrotas++;
+                    return (1);
+                }
             }
         }
     }
@@ -293,6 +363,11 @@ int verificarLinhaAI(char mat[x][x], JOGADORES *vecJogadores, int inome1) {
 
 
 void jogo1v1(JOGADORES *vecJogadores) {
+    int n;
+    printf("\n-x- Tamanho do tabuleiro? -x-\n");
+    printf("-x- Minimo 3! -x-\n");
+    scanf("%d",&n);
+    x=n+(n-1);
     char mat[x][x];
     int id1,id2;
     if(numJogadores < 2){
@@ -306,11 +381,11 @@ void jogo1v1(JOGADORES *vecJogadores) {
         printf("\n-x- Id do segundo jogador -x-");
         scanf("%d",&id2);
         } while (id1==id2);
-        jogar1v1(mat,id1,id2,vecJogadores);
+        jogar1v1(mat,id1,id2,vecJogadores,n);
     }
 }
 
-void jogar1v1(char mat[x][x], int id1, int id2,JOGADORES *vecJogadores) {
+void jogar1v1(char mat[x][x], int id1, int id2,JOGADORES *vecJogadores, int n) {
     int inome1, inome2;
     limpartabuleiro(mat);
     inome1 = buscarNome(id1,vecJogadores);
@@ -321,7 +396,7 @@ void jogar1v1(char mat[x][x], int id1, int id2,JOGADORES *vecJogadores) {
         printf("\n-x- %s -> O -x-\n\n", vecJogadores[inome2].nome);
         gerartabuleiro(mat);
         jogada(mat,vecJogadores,inome1,inome2);
-    }while(verificarTermino(mat,vecJogadores,inome1,inome2) != 1);
+    }while(verificarTermino(mat,vecJogadores,inome1,inome2, n) != 1);
 }
 
 int buscarNome(int id, JOGADORES *vecJogadores) {
@@ -332,35 +407,35 @@ int buscarNome(int id, JOGADORES *vecJogadores) {
     }
 }
 
-int verificarTermino(char mat[x][x], JOGADORES *vecJogadores, int inome1, int inome2) {
-    if(verificarLinha(mat,vecJogadores,inome1,inome2) == 1){
+int verificarTermino(char mat[x][x], JOGADORES *vecJogadores, int inome1, int inome2, int n) {
+    if(verificarLinha(mat,vecJogadores,inome1,inome2, n) == 1){
         gerartabuleiro(mat);
         putchar('\n');
         return(1);
     }
-    if(verificarColuna(mat,vecJogadores,inome1,inome2) == 1){
+    if(verificarColuna(mat,vecJogadores,inome1,inome2,n) == 1){
         gerartabuleiro(mat);
         putchar('\n');
         return(1);
     }
-    if(verificarDiagonalPrimaria(mat,vecJogadores,inome1,inome2) == 1){
+    if(verificarDiagonalPrimaria(mat,vecJogadores,inome1,inome2,n) == 1){
         gerartabuleiro(mat);
         putchar('\n');
         return(1);
     }
-    if(verificarDiagonalSecundaria(mat,vecJogadores,inome1,inome2) == 1){
+    if(verificarDiagonalSecundaria(mat,vecJogadores,inome1,inome2,n) == 1){
         gerartabuleiro(mat);
         putchar('\n');
         return(1);
     }
-    if(verificarEmpate(mat,vecJogadores,inome1,inome2) == 1){
+    if(verificarEmpate(mat,vecJogadores,inome1,inome2,n) == 1){
         gerartabuleiro(mat);
         putchar('\n');
         return(1);
     }
 }
 
-int verificarEmpate(char mat[x][x], JOGADORES *vecJogadores, int inome1, int inome2) {
+int verificarEmpate(char mat[x][x], JOGADORES *vecJogadores, int inome1, int inome2, int n) {
     int cont=0;
     for (int i = 0; i <x ; i=i+2){
         for (int j = 0; j < x; j= j+2) {
@@ -369,7 +444,7 @@ int verificarEmpate(char mat[x][x], JOGADORES *vecJogadores, int inome1, int ino
             }
         }
     }
-    if(cont == pow(x-2,2)){
+    if(cont == pow(n,2)){
         limpar();
         printf("Empate!\n\n");
         vecJogadores[inome1].empates++;
@@ -378,7 +453,7 @@ int verificarEmpate(char mat[x][x], JOGADORES *vecJogadores, int inome1, int ino
     }
 }
 
-int verificarDiagonalSecundaria(char mat[x][x], JOGADORES *vecJogadores, int inome1, int inome2){
+int verificarDiagonalSecundaria(char mat[x][x], JOGADORES *vecJogadores, int inome1, int inome2, int n){
     int cont_o = 0, cont_x = 0;
     for (int i = 0; i < x; i = i+2) {
         if (mat[i][x-1-i] == 'X') {
@@ -386,53 +461,83 @@ int verificarDiagonalSecundaria(char mat[x][x], JOGADORES *vecJogadores, int ino
         } else if (mat[i][x-1-i] == 'O') {
             cont_o++;
         }
-        if(cont_x==x-2){
-            limpar();
-            printf("O vencedor e %s!\n\n", vecJogadores[inome1].nome);
-            vecJogadores[inome1].vitorias++;
-            vecJogadores[inome2].derrotas++;
-            return(1);
-        }
-        else if(cont_o==x-2){
-            limpar();
-            printf("O vencedor e %s!\n\n", vecJogadores[inome2].nome);
-            vecJogadores[inome2].vitorias++;
-            vecJogadores[inome1].derrotas++;
-            return(1);
-        }
-    }
-}
-
-
-
-int verificarColuna(char mat[x][x], JOGADORES *vecJogadores, int inome1, int inome2) {
-    int cont, cont1;
-    for (int i = 0; i < x; i = i+2) {
-        for (int j = 0; j < x; j = j+2) {
-            cont = 0; cont1 = 0;
-            // Mudar o valor de x quando é introduzido. Corro as linhas
-            if (mat[i][j] == 'X') {
-                cont++;
-            } else if (mat[i][j] == 'O') {
-                cont1++;
-            }
-            if (cont == x - 2) {
+        if(n<4){
+            if (cont_x == x - 2) {
                 limpar();
                 printf("O vencedor e %s!\n\n", vecJogadores[inome1].nome);
                 vecJogadores[inome1].vitorias++;
                 vecJogadores[inome2].derrotas++;
                 return (1);
-            } else if (cont1 == x - 2) {
+            } else if (cont_o == x - 2) {
                 limpar();
                 printf("O vencedor e %s!\n\n", vecJogadores[inome2].nome);
                 vecJogadores[inome2].vitorias++;
                 vecJogadores[inome1].derrotas++;
                 return (1);
             }
+        }else{
+            if (cont_x == n) {
+                limpar();
+                printf("O vencedor e %s!\n\n", vecJogadores[inome1].nome);
+                vecJogadores[inome1].vitorias++;
+                vecJogadores[inome2].derrotas++;
+                return (1);
+            } else if (cont_o == n) {
+                limpar();
+                printf("O vencedor e %s!\n\n", vecJogadores[inome2].nome);
+                vecJogadores[inome2].vitorias++;
+                vecJogadores[inome1].derrotas++;
+            }
         }
     }
 }
-int verificarDiagonalPrimaria(char mat[x][x], JOGADORES *vecJogadores, int inome1, int inome2) {
+
+
+
+int verificarColuna(char mat[x][x], JOGADORES *vecJogadores, int inome1, int inome2, int n) {
+    int cont, cont1;
+    for (int i = 0; i < x; i = i+2) {
+        cont = 0; cont1 = 0;
+        for (int j = 0; j < x; j = j+2) {
+            // Mudar o valor de x quando é introduzido. Corro as linhas
+            if (mat[j][i] == 'X') {
+                cont++;
+            } else if (mat[j][i] == 'O') {
+                cont1++;
+            }
+            if(n<4){
+                if (cont == x - 2) {
+                    limpar();
+                    printf("O vencedor e %s!\n\n", vecJogadores[inome1].nome);
+                    vecJogadores[inome1].vitorias++;
+                    vecJogadores[inome2].derrotas++;
+                    return (1);
+                } else if (cont1 == x - 2) {
+                    limpar();
+                    printf("O vencedor e %s!\n\n", vecJogadores[inome2].nome);
+                    vecJogadores[inome2].vitorias++;
+                    vecJogadores[inome1].derrotas++;
+                    return (1);
+                }
+            }else{
+                if (cont == n) {
+                    limpar();
+                    printf("O vencedor e %s!\n\n", vecJogadores[inome1].nome);
+                    vecJogadores[inome1].vitorias++;
+                    vecJogadores[inome2].derrotas++;
+                    return (1);
+                } else if (cont1 == n) {
+                    limpar();
+                    printf("O vencedor e %s!\n\n", vecJogadores[inome2].nome);
+                    vecJogadores[inome2].vitorias++;
+                    vecJogadores[inome1].derrotas++;
+                    return (1);
+                }
+            }
+        }
+    }
+}
+int verificarDiagonalPrimaria(char mat[x][x], JOGADORES *vecJogadores, int inome1, int inome2, int n) {
     int cont_x = 0, cont_o = 0;
 
     for (int i = 0; i < x; i = i + 2) {
@@ -444,19 +549,33 @@ int verificarDiagonalPrimaria(char mat[x][x], JOGADORES *vecJogadores, int inome
                     cont_o++;
                 }
             }
-            if(cont_x==x-2){
-                limpar();
-                printf("O vencedor e %s!\n\n", vecJogadores[inome1].nome);
-                vecJogadores[inome1].vitorias++;
-                vecJogadores[inome2].derrotas++;
-                return(1);
-            }
-            else if(cont_o==x-2){
-                limpar();
-                printf("O vencedor e %s!\n\n", vecJogadores[inome2].nome);
-                vecJogadores[inome2].vitorias++;
-                vecJogadores[inome1].derrotas++;
-                return(1);
+            if(n<4){
+                if (cont_x == x - 2) {
+                    limpar();
+                    printf("O vencedor e %s!\n\n", vecJogadores[inome1].nome);
+                    vecJogadores[inome1].vitorias++;
+                    vecJogadores[inome2].derrotas++;
+                    return (1);
+                } else if (cont_o == x - 2) {
+                    limpar();
+                    printf("O vencedor e %s!\n\n", vecJogadores[inome2].nome);
+                    vecJogadores[inome2].vitorias++;
+                    vecJogadores[inome1].derrotas++;
+                    return (1);
+                }
+            }else{
+                if (cont_x == n) {
+                    limpar();
+                    printf("O vencedor e %s!\n\n", vecJogadores[inome1].nome);
+                    vecJogadores[inome1].vitorias++;
+                    vecJogadores[inome2].derrotas++;
+                    return (1);
+                } else if (cont_o == n) {
+                    limpar();
+                    printf("O vencedor e %s!\n\n", vecJogadores[inome2].nome);
+                    vecJogadores[inome2].vitorias++;
+                    vecJogadores[inome1].derrotas++;
+                }
             }
         }
     }
@@ -464,7 +583,7 @@ int verificarDiagonalPrimaria(char mat[x][x], JOGADORES *vecJogadores, int inome
 
 
 
-int verificarLinha(char mat[x][x], JOGADORES *vecJogadores, int inome1, int inome2) {
+int verificarLinha(char mat[x][x], JOGADORES *vecJogadores, int inome1, int inome2, int n) {
     int cont, cont1;
     for (int i = 0; i < x; i = i+2) {
         cont = 0; cont1 = 0;
@@ -475,18 +594,33 @@ int verificarLinha(char mat[x][x], JOGADORES *vecJogadores, int inome1, int inom
             } else if (mat[i][j] == 'O') {
                 cont1++;
             }
-            if (cont == x - 2) {
-                limpar();
-                printf("O vencedor e %s!\n\n", vecJogadores[inome1].nome);
-                vecJogadores[inome1].vitorias++;
-                vecJogadores[inome2].derrotas++;
-                return (1);
-            } else if (cont1 == x - 2) {
-                limpar();
-                printf("O vencedor e %s!\n\n", vecJogadores[inome2].nome);
-                vecJogadores[inome2].vitorias++;
-                vecJogadores[inome1].derrotas++;
-                return (1);
+            if(n<4){
+                if (cont == x - 2) {
+                    limpar();
+                    printf("O vencedor e %s!\n\n", vecJogadores[inome1].nome);
+                    vecJogadores[inome1].vitorias++;
+                    vecJogadores[inome2].derrotas++;
+                    return (1);
+                } else if (cont1 == x - 2) {
+                    limpar();
+                    printf("O vencedor e %s!\n\n", vecJogadores[inome2].nome);
+                    vecJogadores[inome2].vitorias++;
+                    vecJogadores[inome1].derrotas++;
+                    return (1);
+                }
+            }else{
+                if (cont == n) {
+                    limpar();
+                    printf("O vencedor e %s!\n\n", vecJogadores[inome1].nome);
+                    vecJogadores[inome1].vitorias++;
+                    vecJogadores[inome2].derrotas++;
+                    return (1);
+                } else if (cont1 == n) {
+                    limpar();
+                    printf("O vencedor e %s!\n\n", vecJogadores[inome2].nome);
+                    vecJogadores[inome2].vitorias++;
+                    vecJogadores[inome1].derrotas++;
+                }
             }
         }
     }
@@ -513,27 +647,27 @@ void jogada(char mat[x][x], JOGADORES *vecJogadores, int inome1, int inome2){
         do {
             scanf("%d", &linha);
         }while (linha <= 0);
-        if(linha == 1){
-            linha = linha - 1;
-        }else{
-            if(linha%2 != 0){
-                linha++;
+            if(linha == 1){
+                linha = linha - 1;
             }else{
-                linha = linha;
+                if(linha%2 != 0){
+                    linha++;
+                }else{
+                    linha = linha;
+                }
             }
-        }
         // Pergunta a coluna para jogar
         printf("\n-x- Em que coluna quer jogar? -x-\n");
         scanf("%d",&coluna);
-        if(coluna == 1){
-            coluna = coluna - 1;
-        }else{
-            if(coluna%2 != 0) {
-                coluna++;
+            if(coluna == 1){
+                coluna = coluna - 1;
             }else{
-                coluna = coluna;
+                if(coluna%2 != 0) {
+                    coluna++;
+                }else{
+                    coluna = coluna;
+                }
             }
-        }
         if(verificaPosicao(mat, linha, coluna) != 1){
             printf("\n-x- Posicao nao valida para selecao!! -x-\n");
         }
@@ -546,18 +680,10 @@ void jogada(char mat[x][x], JOGADORES *vecJogadores, int inome1, int inome2){
     vez++;
 }
 
-void registaJogadamatriz(JOGADORES *vecJogadores, int inome1, int inome2, int linha, int coluna, int mat[100][100],int vez){
+void registaJogadamatriz(JOGADORES *vecJogadores, int inome1, int inome2, int linha, int coluna, DADOS *Dados,int vez){
     for (int i = 0; i < 100; ++i) {
         for (int j = 0; j < 100; ++j) {
-            if(j==0){
-                mat[i][j] = vecJogadores[inome1].nome;
-            }else if(j==1){
-                mat[i][j] = vecJogadores[inome2].nome;
-            }else if(j%3 == 0){
-                mat[i][j] = "x";
-            }else if(j%5 == 0){
-                mat[i][j] = '0';
-            }
+
         }
     }
 }

@@ -18,7 +18,7 @@ int verificaPosicao();
 void limpartabuleiro();
 void registaJogada();
 void registaJogadamatriz();
-
+int perguntaTamanho();
 //chamar nome
 int buscarNome();
 

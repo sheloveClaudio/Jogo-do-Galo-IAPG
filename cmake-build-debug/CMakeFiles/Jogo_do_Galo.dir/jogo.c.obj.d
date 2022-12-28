@@ -1,5 +1,5 @@
 CMakeFiles/Jogo_do_Galo.dir/jogo.c.obj: \
- C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\jogo.c \
+ C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\jogo.c \
  C:/PROGRA~1/JETBRA~1/CLION2~1.3/bin/mingw/x86_64-w64-mingw32/include/stdio.h \
  C:/PROGRA~1/JETBRA~1/CLION2~1.3/bin/mingw/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
  C:/PROGRA~1/JETBRA~1/CLION2~1.3/bin/mingw/x86_64-w64-mingw32/include/corecrt.h \
@@ -29,6 +29,6 @@ CMakeFiles/Jogo_do_Galo.dir/jogo.c.obj: \
  C:/PROGRA~1/JETBRA~1/CLION2~1.3/bin/mingw/x86_64-w64-mingw32/include/sys/timeb.h \
  C:/PROGRA~1/JETBRA~1/CLION2~1.3/bin/mingw/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h \
  C:/PROGRA~1/JETBRA~1/CLION2~1.3/bin/mingw/x86_64-w64-mingw32/include/pthread_time.h \
- C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\jogo.h \
- C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\dadosjogadores.h \
- C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\menu.h
+ C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\jogo.h \
+ C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\dadosjogadores.h \
+ C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\menu.h

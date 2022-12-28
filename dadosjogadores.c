@@ -47,7 +47,7 @@ void apagarJogadores(JOGADORES vecJogadores_2[MAX_VECTOR]) {
     JOGADORES vecJogadores_Aux[MAX_VECTOR];
     if (numJogadores > 0) {
 
-        verJogadores(vecJogadores_2);
+        verJogadores1(vecJogadores_2);
         printf("\n-x- Por favor insira o ID do jogador a apagar -x- \n");
         scanf("%d", &idapagar);
         for (int i = 0; i < MAX_VECTOR; ++i) {
@@ -73,8 +73,26 @@ void apagarJogadores(JOGADORES vecJogadores_2[MAX_VECTOR]) {
             printf("\n-x- ID inexistente -x-\n");
             apagarJogadores(vecJogadores_2);
         }
+    }else{
+        printf("\n-x- Nao existem jogadores -x-\n");
+        jogadores_menu();
     }
     jogadores_menu();
+}
+
+void verJogadores1(JOGADORES vecJogadores_2[MAX_VECTOR]) {
+    int valor;
+    printf("\n\n-x- Lista de Jogadores -x-\n");
+    if(numJogadores == 0){
+        printf("\nO numero total de jogadores e: %d",numJogadores);
+    }
+    else{
+        printf("\nO numero total de jogadores e: %d",numJogadores);
+        printf("\n -x- Jogadores -x- \n");
+        for (int i = 0; i < numJogadores; i++) {
+            printf("\nID: %d\nNome: %s %s\nEstatistica: V -> %d D -> %d E -> %d\n", vecJogadores_2[i].id, vecJogadores_2[i].nome, vecJogadores_2[i].apelido, vecJogadores_2[i].vitorias, vecJogadores_2[i].derrotas, vecJogadores_2[i].empates);
+        }
+    }
 }
 
 void verJogadores(JOGADORES vecJogadores_2[MAX_VECTOR]){
@@ -92,18 +110,19 @@ void verJogadores(JOGADORES vecJogadores_2[MAX_VECTOR]){
     }
     printf("\n\n0 - Voltar \n");
     printf("\n-x- Escolha uma das opcoes -x-\n");
+    do{
     scanf("%d",&valor);
-    while(true){
      switch (valor) {
         case 0:
             printf("\n-x- A ir para o menu de jogadores... -x-\n");
             limpar();
             jogadores_menu();
+            break;
         default:
             printf("Opcao invalida!!\n");
             break;
         }
-    }
+    }while(valor!=0);
 }
 
 void carregarJogadores(JOGADORES vecJogadores[MAX_VECTOR]){

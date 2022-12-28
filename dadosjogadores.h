@@ -11,6 +11,7 @@ void registarjogadores();
 void apagarJogadores();
 void verJogadores();
 void carregarJogadores();
+void verJogadores1();
 
 extern int numJogadores;
 

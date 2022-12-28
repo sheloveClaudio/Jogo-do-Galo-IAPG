@@ -53,10 +53,10 @@ RM = "C:\Program Files\JetBrains\CLion 2022.2.3\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master
+CMAKE_SOURCE_DIR = C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -80,14 +80,14 @@ clean: CMakeFiles/Jogo_do_Galo.dir/clean
 CMakeFiles/Jogo_do_Galo.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Jogo_do_Galo.dir\build.make CMakeFiles/Jogo_do_Galo.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Jogo_do_Galo.dir\build.make CMakeFiles/Jogo_do_Galo.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5 "Built target Jogo_do_Galo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5 "Built target Jogo_do_Galo"
 .PHONY : CMakeFiles/Jogo_do_Galo.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Jogo_do_Galo.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\cmake-build-debug\CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\cmake-build-debug\CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/Jogo_do_Galo.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles/Jogo_do_Galo.dir/rule
 
 # Convenience name for target.

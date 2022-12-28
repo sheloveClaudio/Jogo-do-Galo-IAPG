@@ -52,10 +52,10 @@ RM = "C:\Program Files\JetBrains\CLion 2022.2.3\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master
+CMAKE_SOURCE_DIR = C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Jogo_do_Galo.dir/depend.make
@@ -71,58 +71,58 @@ include CMakeFiles/Jogo_do_Galo.dir/flags.make
 CMakeFiles/Jogo_do_Galo.dir/main.c.obj: CMakeFiles/Jogo_do_Galo.dir/flags.make
 CMakeFiles/Jogo_do_Galo.dir/main.c.obj: ../main.c
 CMakeFiles/Jogo_do_Galo.dir/main.c.obj: CMakeFiles/Jogo_do_Galo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Jogo_do_Galo.dir/main.c.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Jogo_do_Galo.dir/main.c.obj -MF CMakeFiles\Jogo_do_Galo.dir\main.c.obj.d -o CMakeFiles\Jogo_do_Galo.dir\main.c.obj -c C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Jogo_do_Galo.dir/main.c.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Jogo_do_Galo.dir/main.c.obj -MF CMakeFiles\Jogo_do_Galo.dir\main.c.obj.d -o CMakeFiles\Jogo_do_Galo.dir\main.c.obj -c C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\main.c
 
 CMakeFiles/Jogo_do_Galo.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Jogo_do_Galo.dir/main.c.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\main.c > CMakeFiles\Jogo_do_Galo.dir\main.c.i
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\main.c > CMakeFiles\Jogo_do_Galo.dir\main.c.i
 
 CMakeFiles/Jogo_do_Galo.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Jogo_do_Galo.dir/main.c.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\main.c -o CMakeFiles\Jogo_do_Galo.dir\main.c.s
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\main.c -o CMakeFiles\Jogo_do_Galo.dir\main.c.s
 
 CMakeFiles/Jogo_do_Galo.dir/menu.c.obj: CMakeFiles/Jogo_do_Galo.dir/flags.make
 CMakeFiles/Jogo_do_Galo.dir/menu.c.obj: ../menu.c
 CMakeFiles/Jogo_do_Galo.dir/menu.c.obj: CMakeFiles/Jogo_do_Galo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Jogo_do_Galo.dir/menu.c.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Jogo_do_Galo.dir/menu.c.obj -MF CMakeFiles\Jogo_do_Galo.dir\menu.c.obj.d -o CMakeFiles\Jogo_do_Galo.dir\menu.c.obj -c C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\menu.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Jogo_do_Galo.dir/menu.c.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Jogo_do_Galo.dir/menu.c.obj -MF CMakeFiles\Jogo_do_Galo.dir\menu.c.obj.d -o CMakeFiles\Jogo_do_Galo.dir\menu.c.obj -c C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\menu.c
 
 CMakeFiles/Jogo_do_Galo.dir/menu.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Jogo_do_Galo.dir/menu.c.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\menu.c > CMakeFiles\Jogo_do_Galo.dir\menu.c.i
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\menu.c > CMakeFiles\Jogo_do_Galo.dir\menu.c.i
 
 CMakeFiles/Jogo_do_Galo.dir/menu.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Jogo_do_Galo.dir/menu.c.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\menu.c -o CMakeFiles\Jogo_do_Galo.dir\menu.c.s
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\menu.c -o CMakeFiles\Jogo_do_Galo.dir\menu.c.s
 
 CMakeFiles/Jogo_do_Galo.dir/jogo.c.obj: CMakeFiles/Jogo_do_Galo.dir/flags.make
 CMakeFiles/Jogo_do_Galo.dir/jogo.c.obj: ../jogo.c
 CMakeFiles/Jogo_do_Galo.dir/jogo.c.obj: CMakeFiles/Jogo_do_Galo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Jogo_do_Galo.dir/jogo.c.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Jogo_do_Galo.dir/jogo.c.obj -MF CMakeFiles\Jogo_do_Galo.dir\jogo.c.obj.d -o CMakeFiles\Jogo_do_Galo.dir\jogo.c.obj -c C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\jogo.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Jogo_do_Galo.dir/jogo.c.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Jogo_do_Galo.dir/jogo.c.obj -MF CMakeFiles\Jogo_do_Galo.dir\jogo.c.obj.d -o CMakeFiles\Jogo_do_Galo.dir\jogo.c.obj -c C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\jogo.c
 
 CMakeFiles/Jogo_do_Galo.dir/jogo.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Jogo_do_Galo.dir/jogo.c.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\jogo.c > CMakeFiles\Jogo_do_Galo.dir\jogo.c.i
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\jogo.c > CMakeFiles\Jogo_do_Galo.dir\jogo.c.i
 
 CMakeFiles/Jogo_do_Galo.dir/jogo.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Jogo_do_Galo.dir/jogo.c.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\jogo.c -o CMakeFiles\Jogo_do_Galo.dir\jogo.c.s
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\jogo.c -o CMakeFiles\Jogo_do_Galo.dir\jogo.c.s
 
 CMakeFiles/Jogo_do_Galo.dir/dadosjogadores.c.obj: CMakeFiles/Jogo_do_Galo.dir/flags.make
 CMakeFiles/Jogo_do_Galo.dir/dadosjogadores.c.obj: ../dadosjogadores.c
 CMakeFiles/Jogo_do_Galo.dir/dadosjogadores.c.obj: CMakeFiles/Jogo_do_Galo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Jogo_do_Galo.dir/dadosjogadores.c.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Jogo_do_Galo.dir/dadosjogadores.c.obj -MF CMakeFiles\Jogo_do_Galo.dir\dadosjogadores.c.obj.d -o CMakeFiles\Jogo_do_Galo.dir\dadosjogadores.c.obj -c C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\dadosjogadores.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Jogo_do_Galo.dir/dadosjogadores.c.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Jogo_do_Galo.dir/dadosjogadores.c.obj -MF CMakeFiles\Jogo_do_Galo.dir\dadosjogadores.c.obj.d -o CMakeFiles\Jogo_do_Galo.dir\dadosjogadores.c.obj -c C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\dadosjogadores.c
 
 CMakeFiles/Jogo_do_Galo.dir/dadosjogadores.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Jogo_do_Galo.dir/dadosjogadores.c.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\dadosjogadores.c > CMakeFiles\Jogo_do_Galo.dir\dadosjogadores.c.i
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\dadosjogadores.c > CMakeFiles\Jogo_do_Galo.dir\dadosjogadores.c.i
 
 CMakeFiles/Jogo_do_Galo.dir/dadosjogadores.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Jogo_do_Galo.dir/dadosjogadores.c.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\dadosjogadores.c -o CMakeFiles\Jogo_do_Galo.dir\dadosjogadores.c.s
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\dadosjogadores.c -o CMakeFiles\Jogo_do_Galo.dir\dadosjogadores.c.s
 
 # Object files for target Jogo_do_Galo
 Jogo_do_Galo_OBJECTS = \
@@ -142,7 +142,7 @@ Jogo_do_Galo.exe: CMakeFiles/Jogo_do_Galo.dir/build.make
 Jogo_do_Galo.exe: CMakeFiles/Jogo_do_Galo.dir/linklibs.rsp
 Jogo_do_Galo.exe: CMakeFiles/Jogo_do_Galo.dir/objects1.rsp
 Jogo_do_Galo.exe: CMakeFiles/Jogo_do_Galo.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable Jogo_do_Galo.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable Jogo_do_Galo.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Jogo_do_Galo.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -154,6 +154,6 @@ CMakeFiles/Jogo_do_Galo.dir/clean:
 .PHONY : CMakeFiles/Jogo_do_Galo.dir/clean
 
 CMakeFiles/Jogo_do_Galo.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\cmake-build-debug C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\cmake-build-debug C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG-master\cmake-build-debug\CMakeFiles\Jogo_do_Galo.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\cmake-build-debug C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\cmake-build-debug C:\Users\Kayo\Desktop\Jogo-do-Galo-IAPG\cmake-build-debug\CMakeFiles\Jogo_do_Galo.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Jogo_do_Galo.dir/depend
 

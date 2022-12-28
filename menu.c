@@ -107,8 +107,8 @@ void tutorial() {
     printf("\n-x- Tutorial -x-\n");
     printf("\nNo Jogo do Galo o tabuleiro e composto por 9 quadrados vazios, alinhados em um tabuleiro 3x3. O objetivo do jogo e de   fazer 3 marcas proprias numa linha, coluna ou diagonal. Se o tabuleiro esta cheio mas nenhum jogador conseguiu chegar a este objetivo, entao o jogo termina empatado.\n\n0 - Voltar\n");
     printf("\n-x- Escolha uma das opcoes -x-\n");
+    do{
     scanf("%d", &t);
-    while (true){
         switch (t) {
             case 0:
                 limpar();
@@ -118,14 +118,14 @@ void tutorial() {
                 printf("\nO numero inserido nao e valido!!\n");
                 break;
         }
-    }
+    }while(t!=0);
 }
 
 
 
 void jogar_menu() {
     int valor = 0;
-    while(true){
+    do{
         printf("\n -x- Jogar -x-\n");
         jogar_menu2();
         printf("\n-x- Escolha uma das opcoes -x-\n");
@@ -144,10 +144,10 @@ void jogar_menu() {
                 break;
             default:
                 limpar();
-                printf("Opcao invalida!!\n");
+                printf("O numero inserido nao e valido!!\n");
                 break;
         }
-    }
+    } while (valor!=0);
 }
 
 
