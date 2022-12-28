@@ -50,7 +50,11 @@ void jogo1vAI(JOGADORES *vecJogadores){
     int n;
     printf("\n-x- Tamanho do tabuleiro? -x-\n");
     printf("-x- Minimo 3! -x-\n");
+    do{
     scanf("%d",&n);
+    if(n<3)
+    printf("\n-x- O numero e menor que 3 -x-\n");
+    }while (n<3);
     x=n+(n-1);
 
     char mat[x][x];
@@ -114,7 +118,9 @@ void jogadavsAI(char mat[x][x], JOGADORES *vecJogadores, int inome1){
             }
             // Pergunta a coluna para jogar
             printf("\n-x- Em que coluna quer jogar? -x-\n");
-            scanf("%d",&coluna);
+            do {
+                scanf("%d",&coluna);
+            }while (coluna <= 0);
             if(coluna<4){
                 if(coluna == 1){
                     coluna = coluna - 1;
@@ -363,6 +369,7 @@ int verificarLinhaAI(char mat[x][x], JOGADORES *vecJogadores, int inome1, int n)
 
 
 void jogo1v1(JOGADORES *vecJogadores) {
+    int k =0,k1=0;
     int n;
     printf("\n-x- Tamanho do tabuleiro? -x-\n");
     printf("-x- Minimo 3! -x-\n");
@@ -376,10 +383,24 @@ void jogo1v1(JOGADORES *vecJogadores) {
     }
     else{
         printf("\n-x- Id do primeiro jogador -x-");
-        scanf("%d",&id1);
+        do{
+            scanf("%d",&id1);
+            for (int i = 0; i < MAX_VECTOR; ++i) {
+                if(id1==vecJogadores[i].id){
+                    k = 1;
+                }
+            }
+        }while(k!=1);
         do{
         printf("\n-x- Id do segundo jogador -x-");
-        scanf("%d",&id2);
+            do{
+                scanf("%d",&id2);
+                for (int i = 0; i < MAX_VECTOR; ++i) {
+                    if(id2==vecJogadores[i].id){
+                        k1 = 1;
+                    }
+                }
+            }while(k1!=1);
         } while (id1==id2);
         jogar1v1(mat,id1,id2,vecJogadores,n);
     }
@@ -387,6 +408,7 @@ void jogo1v1(JOGADORES *vecJogadores) {
 
 void jogar1v1(char mat[x][x], int id1, int id2,JOGADORES *vecJogadores, int n) {
     int inome1, inome2;
+    int njogada = 0;
     limpartabuleiro(mat);
     inome1 = buscarNome(id1,vecJogadores);
     inome2 = buscarNome(id2,vecJogadores);
@@ -395,7 +417,7 @@ void jogar1v1(char mat[x][x], int id1, int id2,JOGADORES *vecJogadores, int n) {
         printf("\n-x- %s -> X -x-", vecJogadores[inome1].nome);
         printf("\n-x- %s -> O -x-\n\n", vecJogadores[inome2].nome);
         gerartabuleiro(mat);
-        jogada(mat,vecJogadores,inome1,inome2);
+        jogada(mat,vecJogadores,inome1,inome2, njogada) ;
     }while(verificarTermino(mat,vecJogadores,inome1,inome2, n) != 1);
 }
 
@@ -634,8 +656,8 @@ void limpartabuleiro(char mat[x][x]) {
     }
 }
 
-void jogada(char mat[x][x], JOGADORES *vecJogadores, int inome1, int inome2){
-    int linha, coluna;
+void jogada(char mat[x][x], JOGADORES *vecJogadores, int inome1, int inome2, int njogada){
+    int linha, coluna, valorlinha, valorcoluna;
     if((vez%2)+1==1){
         printf("\n -x- Vez de %s -x-\n",vecJogadores[inome1].nome);
     }else{
@@ -647,18 +669,27 @@ void jogada(char mat[x][x], JOGADORES *vecJogadores, int inome1, int inome2){
         do {
             scanf("%d", &linha);
         }while (linha <= 0);
-            if(linha == 1){
+        valorlinha = linha;
+        if(linha<4) {
+            if (linha == 1) {
                 linha = linha - 1;
-            }else{
-                if(linha%2 != 0){
+            } else {
+                if (linha % 2 != 0) {
                     linha++;
-                }else{
+                } else {
                     linha = linha;
                 }
             }
+        }else{
+            linha = 2 + linha + (linha-4);
+        }
         // Pergunta a coluna para jogar
         printf("\n-x- Em que coluna quer jogar? -x-\n");
-        scanf("%d",&coluna);
+        do {
+            scanf("%d", &coluna);
+        }while (coluna <= 0);
+        valorcoluna = coluna;
+        if(coluna<4){
             if(coluna == 1){
                 coluna = coluna - 1;
             }else{
@@ -668,58 +699,38 @@ void jogada(char mat[x][x], JOGADORES *vecJogadores, int inome1, int inome2){
                     coluna = coluna;
                 }
             }
+        }else{
+            coluna = 2 + coluna + (coluna-4);
+        }
         if(verificaPosicao(mat, linha, coluna) != 1){
             printf("\n-x- Posicao nao valida para selecao!! -x-\n");
         }
     }while(verificaPosicao(mat, linha, coluna) != 1);
     if(vez%2 == 0){
         mat[linha][coluna] = 'X';
+        njogada++;
     }else{
         mat[linha][coluna] = 'O';
+        njogada++;
     }
+    registaJogadamatriz(vecJogadores,inome1,inome2,valorlinha,valorcoluna,Dados,vez,njogada);
     vez++;
 }
 
-void registaJogadamatriz(JOGADORES *vecJogadores, int inome1, int inome2, int linha, int coluna, DADOS *Dados,int vez){
-    for (int i = 0; i < 100; ++i) {
-        for (int j = 0; j < 100; ++j) {
-
+void registaJogadamatriz(JOGADORES *vecJogadores, int inome1, int inome2, int linha, int coluna, DADOS Dados[MAX_VECTOR],int vez, int njogada){
+        if(vez%2==0){
+        Dados[njogada-1].matrizdados[linha][linha] = linha-1;
+        Dados[njogada-1].matrizdados[coluna][coluna] = coluna-1;
+        Dados[njogada-1].id = vecJogadores[inome1].id;
+        strcpy(&Dados[njogada-1].nome,&vecJogadores[inome1].nome);
+        }else{
+            Dados[njogada-1].matrizdados[linha][linha] = linha;
+            Dados[njogada-1].matrizdados[coluna][coluna] = coluna;
+            Dados[njogada-1].id = vecJogadores[inome2].id;
+            strcpy(&Dados[njogada-1].nome,&vecJogadores[inome2].nome);
         }
-    }
 }
 
-void registaJogada(JOGADORES *vecJogadores, int inome1, int inome2, int linha, int coluna, DADOS Dados[MAX_VECTOR],int vez) {
-    char dados_x[5] = "(x)";
-    char dados_o[5] = "(o)";
-    char dadox[5] = "x";
-    char dadoo[5] = "o";
-    char linhas[5];
-    char colunas[5];
-    char nome[MAX_VECTOR];
-    char nome1[MAX_VECTOR];
-    sprintf(linhas,"%d",linha);
-    sprintf(colunas, "%d", coluna);
-    strcpy(nome,vecJogadores[inome1].nome);
-    strcpy(nome1,vecJogadores[inome2].nome);
-    for (int i = 0; i < MAX_VECTOR; ++i) {
-         if (Dados[i].dados != '-'){
-             strcat(nome,dados_x);
-             strcat(nome1,dados_o);
-             strcat(nome,nome1);
-             if(vez%2 == 0){
-                 strcat(linhas,colunas);
-                 strcat(dadox,linhas);
-                 strcat(nome,dadox);
-             }else{
-                 strcat(linhas,colunas);
-                 strcat(dadoo,linhas);
-                 strcat(nome,dadoo);
-             }
-             strcat('-',nome);
-             strcpy(Dados[i].dados,nome);
-        }
-    }
-}
 
 int verificaPosicao(char mat[x][x], int linha, int coluna){
     if(linha < 0 || coluna < 0 || coluna > x || linha > x || mat[linha][coluna] != ' '){

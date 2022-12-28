@@ -16,7 +16,6 @@ void jogadavsAI(); // playerXbot
 void jogadaAI(); // playerXbot
 int verificaPosicao();
 void limpartabuleiro();
-void registaJogada();
 void registaJogadamatriz();
 int perguntaTamanho();
 //chamar nome
@@ -41,9 +40,9 @@ int verificarDiagonalSecundariaAI();
 int verificarEmpateAI();
 
 typedef struct dadosjogo{
+    int id;
     int matrizdados[100][100];
-    char dados[1000];
-
+    char nome[100];
 }DADOS;
 
 #endif //MAIN_C_JOGO_H
