@@ -17,6 +17,7 @@ void jogadaAI(); // playerXbot
 int verificaPosicao();
 void limpartabuleiro();
 void registaJogadamatriz();
+void mostrarHistorico();
 int perguntaTamanho();
 //chamar nome
 int buscarNome();
@@ -43,6 +44,7 @@ typedef struct dadosjogo{
     int id;
     int matrizdados[100][100];
     char nome[100];
+    char letra[10];
 }DADOS;
 
 #endif //MAIN_C_JOGO_H

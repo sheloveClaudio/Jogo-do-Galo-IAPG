@@ -64,29 +64,24 @@ void jogadores_menu() {
         do {
             scanf("%d", &po);
             switch (po) {
-                case 1: {
+                case 1:
                     registarjogadores(vecJogadores);
                     break;
-                }
-                case 2: {
+                case 2:
                     limpar();
                     apagarJogadores(vecJogadores);
                     break;
-                }
-                case 3: {
+                case 3:
                     limpar();
                     verJogadores(vecJogadores);
                     break;
-                }
-                case 4: {
+                case 4:
                     carregarJogadores(vecJogadores);
                     break;
-                }
-                case 0: {
+                case 0:
                     limpar();
                     menu();
                     break;
-                }
                 default:
                     printf("O numero inserido nao e valido!!\n");
                     break;
@@ -136,6 +131,9 @@ void jogar_menu() {
                 break;
             case 2:
                 jogo1vAI(vecJogadores);
+                break;
+            case 3:
+                mostrarHistorico();
                 break;
             case 0:
                 limpar();

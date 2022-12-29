@@ -13,7 +13,6 @@
 
 DADOS Dados[MAX_VECTOR];
 
-
 int x, vez = 0;
 
 
@@ -373,7 +372,11 @@ void jogo1v1(JOGADORES *vecJogadores) {
     int n;
     printf("\n-x- Tamanho do tabuleiro? -x-\n");
     printf("-x- Minimo 3! -x-\n");
-    scanf("%d",&n);
+    do{
+        scanf("%d",&n);
+        if(n<3)
+            printf("\n-x- O numero e menor que 3 -x-\n");
+    }while (n<3);
     x=n+(n-1);
     char mat[x][x];
     int id1,id2;
@@ -417,6 +420,7 @@ void jogar1v1(char mat[x][x], int id1, int id2,JOGADORES *vecJogadores, int n) {
         printf("\n-x- %s -> X -x-", vecJogadores[inome1].nome);
         printf("\n-x- %s -> O -x-\n\n", vecJogadores[inome2].nome);
         gerartabuleiro(mat);
+        njogada++;
         jogada(mat,vecJogadores,inome1,inome2, njogada) ;
     }while(verificarTermino(mat,vecJogadores,inome1,inome2, n) != 1);
 }
@@ -708,29 +712,76 @@ void jogada(char mat[x][x], JOGADORES *vecJogadores, int inome1, int inome2, int
     }while(verificaPosicao(mat, linha, coluna) != 1);
     if(vez%2 == 0){
         mat[linha][coluna] = 'X';
-        njogada++;
     }else{
         mat[linha][coluna] = 'O';
-        njogada++;
     }
     registaJogadamatriz(vecJogadores,inome1,inome2,valorlinha,valorcoluna,Dados,vez,njogada);
     vez++;
 }
 
-void registaJogadamatriz(JOGADORES *vecJogadores, int inome1, int inome2, int linha, int coluna, DADOS Dados[MAX_VECTOR],int vez, int njogada){
+void registaJogadamatriz(JOGADORES *vecJogadores, int inome1, int inome2, int linha, int coluna, DADOS *Dados,int vez, int njogada){
         if(vez%2==0){
-        Dados[njogada-1].matrizdados[linha][linha] = linha-1;
-        Dados[njogada-1].matrizdados[coluna][coluna] = coluna-1;
-        Dados[njogada-1].id = vecJogadores[inome1].id;
-        strcpy(&Dados[njogada-1].nome,&vecJogadores[inome1].nome);
-        }else{
+            if(linha!=coluna){
             Dados[njogada-1].matrizdados[linha][linha] = linha;
             Dados[njogada-1].matrizdados[coluna][coluna] = coluna;
-            Dados[njogada-1].id = vecJogadores[inome2].id;
-            strcpy(&Dados[njogada-1].nome,&vecJogadores[inome2].nome);
+            Dados[njogada-1].id = vecJogadores[inome1].id;
+            strcpy(&Dados[njogada-1].letra, "x");
+            strcpy(&Dados[njogada-1].nome,&vecJogadores[inome1].nome);
+           }else {
+                Dados[njogada-1].matrizdados[linha][linha] = linha;
+                Dados[njogada-1].matrizdados[coluna+1][coluna+1] = coluna;
+                Dados[njogada-1].id = vecJogadores[inome1].id;
+                strcpy(&Dados[njogada-1].letra, "x");
+                strcpy(&Dados[njogada-1].nome,&vecJogadores[inome1].nome);
+            }
+
+        }else{
+            if(linha!= coluna) {
+                Dados[njogada - 1].matrizdados[linha][linha] = linha;
+                Dados[njogada - 1].matrizdados[coluna][coluna] = coluna;
+                Dados[njogada - 1].id = vecJogadores[inome2].id;
+                strcpy(&Dados[njogada-1].letra, "o");
+                strcpy(&Dados[njogada - 1].nome, &vecJogadores[inome2].nome);
+            }else {
+                Dados[njogada-1].matrizdados[linha][linha] = linha;
+                Dados[njogada-1].matrizdados[coluna+1][coluna+1] = coluna;
+                Dados[njogada-1].id = vecJogadores[inome2].id;
+                strcpy(&Dados[njogada-1].letra, "o");
+                strcpy(&Dados[njogada-1].nome,&vecJogadores[inome2].nome);
+            }
         }
 }
 
+void mostrarHistorico(){
+    char dados[1000];
+    char string1[50] ="\0";
+    char string2[50]= "\0";
+    char string_letra[50] ="\0";
+    char string_l[50] ="\0";
+    char stringtest[50];
+    strcpy(string1, strcat(&Dados[0].id,&Dados[0].nome));
+    strcpy(string2, strcat(&Dados[1].id,&Dados[1].nome));
+    strcat(string1,"(x) ");
+    strcat(string2,"(o) ");
+    strcat(string1, string2);
+    for (int i = 0; i < MAX_VECTOR; ++i){
+        strcpy(string_letra, Dados[i].letra);
+        strcat(stringtest,string_letra);
+        for (int j = 0; j < 100; ++j) {
+            for (int k = 0; k < 100; ++k) {
+                if(Dados[i].matrizdados[j][k] != 0){
+                    strcpy(string_l,&Dados[i].matrizdados[j][k]);
+                    strcat(stringtest,string_l);
+                }
+            }
+        }
+    }
+    strcat(string1,stringtest);
+    strcat(dados,string1);
+    printf("%s",dados);
+    //d_jogador(x) id_jogador(o) SimboloColunaLinha SimboloColunaLinha ...
+    //12_Joao(x) 12_Antonio(o) x11o22x21o33
+}
 
 int verificaPosicao(char mat[x][x], int linha, int coluna){
     if(linha < 0 || coluna < 0 || coluna > x || linha > x || mat[linha][coluna] != ' '){
