@@ -19,6 +19,8 @@ void limpartabuleiro();
 void registaJogadamatriz();
 void mostrarHistorico();
 int perguntaTamanho();
+void guardarHistoricomatriz();
+void lerHistoricomatriz();
 //chamar nome
 int buscarNome();
 

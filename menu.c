@@ -31,16 +31,11 @@ int menu() {
                 break;
             case 3:
                 limpar();
-                printf("-x- A salvar dados... -x-\n");
+                lerHistoricomatriz();
+                printf("-x- Historico de Jogo importado! -x-\n");
                 //funcao de salvar
                 break;
             case 4:
-                limpar();
-                printf("-x- A salvar dados... -x-\n");
-                //funcao de salvar
-                printf("-x- Ate a proxima! -x-\n");
-                exit(0);
-            case 5:
                 limpar();
                 tutorial();
                 break;
@@ -58,7 +53,7 @@ int menu() {
 
 void jogadores_menu() {
         int po = 0;
-        printf("\n-x- Menu de Jogares -x-\n");
+        printf("\n-x- Menu de Jogadores -x-\n");
         jogares_menu2();
         printf("\n-x- Escolha uma das opcoes -x-\n");
         do {
@@ -74,9 +69,6 @@ void jogadores_menu() {
                 case 3:
                     limpar();
                     verJogadores(vecJogadores);
-                    break;
-                case 4:
-                    carregarJogadores(vecJogadores);
                     break;
                 case 0:
                     limpar();
@@ -152,14 +144,14 @@ void jogar_menu() {
 void jogar_menu2() {
     printf("\n1 - Jogar  Um vs Um\n");
     printf("2 - Jogar contra Computador\n");
+    printf("3 - Historico de jogo\n");
     printf("0 - Voltar\n");
 }
 
 void inicio_menu() {
     printf("\n1 - Jogar\n");
     printf("2 - Menu de Jogadores\n");
-    printf("3 - Salvar\n");
-    printf("4 - Salvar e sair\n");
-    printf("5 - Tutorial\n");
+    printf("3 - Importar historico de jogo\n");
+    printf("4 - Tutorial\n");
     printf("0 - Sair\n");
 }

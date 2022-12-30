@@ -15,13 +15,13 @@ int numJogadores = 0;
 void registarjogadores(JOGADORES vecJogadores_2[MAX_VECTOR]){
 
     JOGADORES j;
-    limpar();
     printf("\nIntroduza os dados do jogador:\n");
     printf("ID:");
     scanf("%d", &j.id);
     for (int i = 0; i < MAX_VECTOR; ++i) {
         if(vecJogadores_2[i].id == j.id){
-            printf("Ja existe um jogador com esse ID!!\nInsira novamente: ");
+            limpar();
+            printf("Ja existe um jogador com esse ID!!");
             registarjogadores(vecJogadores_2);
         }
         else if (vecJogadores_2[i].id == 0){
@@ -29,6 +29,7 @@ void registarjogadores(JOGADORES vecJogadores_2[MAX_VECTOR]){
             scanf("%s",&j.nome);
             printf("Apelido:");
             scanf("%s",&j.apelido);
+            limpar();
             printf("\nJogador registado com sucesso!\n");
             j.vitorias = 0;
             j.derrotas = 0;
@@ -70,6 +71,7 @@ void apagarJogadores(JOGADORES vecJogadores_2[MAX_VECTOR]) {
                 vecJogadores_2[k] = vecJogadores_Aux[k];
             }
         } else {
+            limpar();
             printf("\n-x- ID inexistente -x-\n");
             apagarJogadores(vecJogadores_2);
         }
@@ -123,14 +125,4 @@ void verJogadores(JOGADORES vecJogadores_2[MAX_VECTOR]){
             break;
         }
     }while(valor!=0);
-}
-
-void carregarJogadores(JOGADORES vecJogadores[MAX_VECTOR]){
-    int c;
-    FILE *carregarJogadores;
-    carregarJogadores = fopen("jogadores.txt", "r");
-    if(carregarJogadores == NULL){
-        printf("\n-x- O ficheiro jogardores.txt nao existe -x-\n");
-        jogadores_menu();
-    }
 }

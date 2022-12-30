@@ -423,6 +423,7 @@ void jogar1v1(char mat[x][x], int id1, int id2,JOGADORES *vecJogadores, int n) {
         njogada++;
         jogada(mat,vecJogadores,inome1,inome2, njogada) ;
     }while(verificarTermino(mat,vecJogadores,inome1,inome2, n) != 1);
+    guardarHistoricomatriz(njogada);
 }
 
 int buscarNome(int id, JOGADORES *vecJogadores) {
@@ -758,7 +759,7 @@ void mostrarHistorico(){
     char string2[50]= "\0";
     char string_letra[50] ="\0";
     char string_l[50] ="\0";
-    char stringtest[50];
+    char stringtest[50] ="\0";
     strcpy(string1, strcat(&Dados[0].id,&Dados[0].nome));
     strcpy(string2, strcat(&Dados[1].id,&Dados[1].nome));
     strcat(string1,"(x) ");
@@ -778,8 +779,8 @@ void mostrarHistorico(){
     }
     strcat(string1,stringtest);
     strcat(dados,string1);
-    printf("%s",dados);
-    //d_jogador(x) id_jogador(o) SimboloColunaLinha SimboloColunaLinha ...
+    printf("%s",dados); // Se for o terminal do windows, os numeros tornam-se em emojis.
+    //id_jogador(x) id_jogador(o) SimboloColunaLinha SimboloColunaLinha ...
     //12_Joao(x) 12_Antonio(o) x11o22x21o33
 }
 
@@ -797,4 +798,28 @@ void limpar() {
         putchar('.\n');
         cont++;
     } while (cont != 100);
+}
+void guardarHistoricomatriz(int njogada){
+    FILE *historicomatriz;
+    historicomatriz = fopen("jogadasmat.bin", "wb");
+    if(historicomatriz == NULL){
+        printf("\n-x- Erro ao abrir! -x-\n");
+    }else{
+        for (int i = 0; i < njogada-1; ++i) {
+            fwrite(&Dados[i], sizeof(struct dadosjogo),1,historicomatriz);
+        }
+    }
+    fclose(historicomatriz);
+}
+void lerHistoricomatriz(){
+    FILE *historicomatriz;
+    historicomatriz = fopen("jogadasmat.bin","rb");
+    if(historicomatriz == NULL){
+        printf("\n-x- Erro ao abrir! -x-\n");
+    }else{
+        for (int i = 0; i < 50; ++i) {
+            fread(&Dados[i], sizeof(struct dadosjogo), 1, historicomatriz);
+        }
+    }
+    fclose(historicomatriz);
 }
