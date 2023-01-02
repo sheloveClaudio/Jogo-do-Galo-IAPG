@@ -15,8 +15,10 @@ DADOS Dados[MAX_VECTOR];
 
 int x, vez = 0;
 
+// x é o tamanho real da matriz
 
-void gerartabuleiro(char mat[x][x]){
+
+void gerartabuleiro(char mat[x][x]){ // Imprime o tabuleiro no ecrã
     for (int i = 0; i < x; i = i+2) {
         for (int j = 1; j < x; j= j +2) {
             mat[i][j] = '|';
@@ -56,7 +58,7 @@ void jogo1vAI(JOGADORES *vecJogadores){
     }while (n<3);
     x=n+(n-1);
 
-    char mat[x][x];
+    char mat[x][x]; // Matriz do jogo + tabuleiro
     int id1,k=0;
     if(numJogadores<1){
         limpar();
@@ -70,7 +72,7 @@ void jogo1vAI(JOGADORES *vecJogadores){
                     k = 1;
                 }
             }
-        }while(k!=1);
+        }while(k!=1); // Não deixa inserir um id que não existe
         jogar1vAI(mat,id1,vecJogadores,n);
     }
 }
@@ -138,11 +140,11 @@ void jogadavsAI(char mat[x][x], JOGADORES *vecJogadores, int inome1){
             }
         }while(verificaPosicao(mat, linha, coluna) != 1);
     }else{
-        jogadaAI(mat);
+        jogadaAI(mat); // Jogada do bot
     }
 
     if(vez%2 == 0){
-        mat[linha][coluna] = 'X';
+        mat[linha][coluna] = 'X'; // Escreve X se for o player a jogar
     }
     vez++;
 }
@@ -151,7 +153,7 @@ void jogadaAI(char mat[x][x]) {
     int linha, coluna;
     srand(time(0));
     do{
-        linha = (rand() % (x - 0 + 1)) + 0;
+        linha = (rand() % (x - 0 + 1)) + 0; //gerar
         coluna = (rand() % (x - 0 + 1)) + 0;
     } while(verificaPosicao(mat, linha, coluna) != 1);
     mat[linha][coluna]= 'O';
@@ -426,7 +428,7 @@ void jogar1v1(char mat[x][x], int id1, int id2,JOGADORES *vecJogadores, int n) {
     guardarHistoricomatriz(njogada);
 }
 
-int buscarNome(int id, JOGADORES *vecJogadores) {
+int buscarNome(int id, JOGADORES *vecJogadores) { // vai buscar a posição no array de structs na qual está o jogador (inome)
     for (int i = 0; i < MAX_VECTOR; ++i) {
         if (vecJogadores[i].id == id){
             return i;
@@ -675,7 +677,7 @@ void jogada(char mat[x][x], JOGADORES *vecJogadores, int inome1, int inome2, int
             scanf("%d", &linha);
         }while (linha <= 0);
         valorlinha = linha;
-        if(linha<4) {
+        if(linha<4) { // Mesma logica da coluna
             if (linha == 1) {
                 linha = linha - 1;
             } else {
@@ -693,19 +695,21 @@ void jogada(char mat[x][x], JOGADORES *vecJogadores, int inome1, int inome2, int
         do {
             scanf("%d", &coluna);
         }while (coluna <= 0);
-        valorcoluna = coluna;
-        if(coluna<4){
+        valorcoluna = coluna; // Posição em que o jogador quer jogar
+        if(coluna<4){ // Caso o jogo seja com um tabuleiro de 3x3
             if(coluna == 1){
-                coluna = coluna - 1;
+                coluna = coluna - 1; //  1 para o jogador seria 0 para o programa
             }else{
-                if(coluna%2 != 0) {
+                if(coluna%2 != 0) { // Como o 1 da matriz é | se não for par ele adiciona 1
                     coluna++;
                 }else{
-                    coluna = coluna;
+                    coluna = coluna; // Caso seja igual pode simplesmente escrever porque os valor para escrever andam de 2 em 2 valores para o caso do 3x3 (0, 2, 4)
                 }
             }
         }else{
-            coluna = 2 + coluna + (coluna-4);
+            coluna = 2 + coluna + (coluna-4); // Calcula o valor da coluna para caso seja maior que 4 executamos esse calculo
+                                                    // que consiste em uma soma entre: 2 ( valor de espaçamento entre casas par ajogo) + a coluna a jogar
+                                                        // + a diferença entre a coluna a jogar e o valor minimo de coluna em qual começa este calculo a ser utilizado
         }
         if(verificaPosicao(mat, linha, coluna) != 1){
             printf("\n-x- Posicao nao valida para selecao!! -x-\n");
@@ -760,8 +764,8 @@ void mostrarHistorico(){
     char string_letra[50] ="\0";
     char string_l[50] ="\0";
     char stringtest[50] ="\0";
-    strcpy(string1, strcat(&Dados[0].id,&Dados[0].nome));
-    strcpy(string2, strcat(&Dados[1].id,&Dados[1].nome));
+    strcpy(string1, strcat(&Dados[0].id,&Dados[0].nome)); // Junta o ID ao nome
+    strcpy(string2, strcat(&Dados[1].id,&Dados[1].nome)); // Junta o ID ao nome
     strcat(string1,"(x) ");
     strcat(string2,"(o) ");
     strcat(string1, string2);
@@ -772,7 +776,7 @@ void mostrarHistorico(){
             for (int k = 0; k < 100; ++k) {
                 if(Dados[i].matrizdados[j][k] != 0){
                     strcpy(string_l,&Dados[i].matrizdados[j][k]);
-                    strcat(stringtest,string_l);
+                    strcat(stringtest,string_l); // Junta a letra com a jogada
                 }
             }
         }
@@ -784,7 +788,7 @@ void mostrarHistorico(){
     //12_Joao(x) 12_Antonio(o) x11o22x21o33
 }
 
-int verificaPosicao(char mat[x][x], int linha, int coluna){
+int verificaPosicao(char mat[x][x], int linha, int coluna){ // Vê se a posição escolhida está ocupada
     if(linha < 0 || coluna < 0 || coluna > x || linha > x || mat[linha][coluna] != ' '){
         return 0;
     }else{
@@ -792,7 +796,7 @@ int verificaPosicao(char mat[x][x], int linha, int coluna){
     }
 }
 
-void limpar() {
+void limpar() { // Dá um simples "clean" ao terminar.
     int cont = 0;
     do {
         putchar('.\n');
@@ -818,7 +822,7 @@ void lerHistoricomatriz(){
         printf("\n-x- Erro ao abrir! -x-\n");
     }else{
         for (int i = 0; i < 50; ++i) {
-            fread(&Dados[i], sizeof(struct dadosjogo), 1, historicomatriz);
+            fread(&Dados[i], sizeof(struct dadosjogo), 1, historicomatriz); // Lê o ficheiro jogadasmat.bin e escreve em *Dados
         }
     }
     fclose(historicomatriz);

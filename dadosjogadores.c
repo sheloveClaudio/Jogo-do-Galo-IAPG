@@ -12,19 +12,19 @@
 int numJogadores = 0;
 
 
-void registarjogadores(JOGADORES vecJogadores_2[MAX_VECTOR]){
+void registarjogadores(JOGADORES vecJogadores_2[MAX_VECTOR]){ // recebe vecJogadores vindo menu
 
     JOGADORES j;
     printf("\nIntroduza os dados do jogador:\n");
     printf("ID:");
     scanf("%d", &j.id);
     for (int i = 0; i < MAX_VECTOR; ++i) {
-        if(vecJogadores_2[i].id == j.id){
+        if(vecJogadores_2[i].id == j.id){ // Verifica se o ID já existe no array de structs
             limpar();
             printf("Ja existe um jogador com esse ID!!");
             registarjogadores(vecJogadores_2);
         }
-        else if (vecJogadores_2[i].id == 0){
+        else if (vecJogadores_2[i].id == 0){ // Caso não exista pergunta dados e cria player
             printf("Nome:");
             scanf("%s",&j.nome);
             printf("Apelido:");
@@ -82,7 +82,7 @@ void apagarJogadores(JOGADORES vecJogadores_2[MAX_VECTOR]) {
     jogadores_menu();
 }
 
-void verJogadores1(JOGADORES vecJogadores_2[MAX_VECTOR]) {
+void verJogadores1(JOGADORES vecJogadores_2[MAX_VECTOR]) { // Mostra lista de jogadores para o menu de apagar, sem a opção de switch
     int valor;
     printf("\n\n-x- Lista de Jogadores -x-\n");
     if(numJogadores == 0){
@@ -97,7 +97,7 @@ void verJogadores1(JOGADORES vecJogadores_2[MAX_VECTOR]) {
     }
 }
 
-void verJogadores(JOGADORES vecJogadores_2[MAX_VECTOR]){
+void verJogadores(JOGADORES vecJogadores_2[MAX_VECTOR]){ // Mostra a çista total de jogadores
     int valor;
     printf("\n\n-x- Lista de Jogadores -x-\n");
     if(numJogadores == 0){

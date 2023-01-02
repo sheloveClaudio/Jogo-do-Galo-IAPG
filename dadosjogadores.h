@@ -22,7 +22,6 @@ typedef struct dadosjogadores{
     int empates; // Registar no fim de cada jogo
     char nome[MAX_VECTOR];  // Escrever no inico do jogo
     char apelido[MAX_VECTOR]; // Escrever no inico do jogo
-    char historico[MAX_VECTOR];
 
 }JOGADORES;
 
